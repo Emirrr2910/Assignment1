@@ -1,0 +1,292 @@
+* {
+    padding: 0;
+    margin: 0;
+    list-style: none;
+    text-decoration: none;
+  }
+
+  .navbar {
+    background-color: #212529; 
+    padding: 10px 20px;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+  }
+  
+  .navbar .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .navbar .navbar-brand {
+    color: #6fbb18;
+    font-size: 24px;
+    font-weight: bold;
+  }
+  
+  .navbar-links {
+    display: flex;
+    gap: 20px;
+  }
+  
+  .navbar-links li {
+    list-style: none;
+  }
+  
+  .navbar-links a {
+    color: #f8f9fa;
+    text-decoration: none;
+    font-weight: 500;
+  }
+  
+  .navbar-links a:hover {
+    color: #6fbb18;
+  }
+  
+
+  .container {
+    padding: 30px;
+  }
+  
+  .content {
+    background-color: #fff;
+    padding: 40px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    max-width: 600px;
+    margin: 30px auto;
+  }
+  
+  .user-details .input-box {
+    margin-bottom: 20px;
+  }
+  
+  .details {
+    font-size: 1.1rem;
+    font-weight: bold;
+    margin-bottom: 5px;
+  }
+  
+  .input-box input {
+    width: 100%;
+    padding: 10px;
+    font-size: 1rem;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+  }
+  
+  .button {
+    text-align: center;
+  }
+  
+  .button input {
+    padding: 10px 20px;
+    margin-top: 10px;
+    background-color: #6fbb18;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1rem;
+    color: white;
+  }
+  
+  .button input[type="reset"] {
+    background-color: #f44336;
+  }
+  
+  .button input:hover {
+    background-color: #5a9c16;
+  }
+  
+  .button input[type="reset"]:hover {
+    background-color: #e57373;
+  }
+.container {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.content {
+  background-color: #f9f9f9;
+  padding: 30px;
+  border-radius: 8px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+h2 {
+  text-align: center;
+  font-size: 28px;
+  margin-bottom: 20px;
+  color: #333;
+}
+
+.user-details {
+  display: flex;
+  flex-direction: column;
+}
+
+.input-box {
+  margin-bottom: 15px;
+}
+
+.input-box span {
+  font-size: 16px;
+  font-weight: 500;
+  color: #333;
+}
+
+.input-box input,
+.input-box textarea,
+.input-box select {
+  width: 100%;
+  padding: 10px;
+  margin-top: 5px;
+  font-size: 14px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  box-sizing: border-box;
+  transition: border 0.3s ease;
+}
+
+.input-box input:focus,
+.input-box textarea:focus {
+  border-color: #007BFF;
+  outline: none;
+}
+
+textarea {
+  resize: vertical;
+  height: 150px;
+}
+
+button,
+.input-box input[type="submit"] {
+  background-color: #007BFF;
+  color: white;
+  border: none;
+  padding: 12px 20px;
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+  border-radius: 5px;
+  transition: background-color 0.3s ease;
+}
+
+button:hover,
+.input-box input[type="submit"]:hover {
+  background-color: #0056b3;
+}
+
+input[type="date"] {
+  cursor: pointer;
+}
+.button {
+  text-align: center;
+  margin-top: 20px;
+}
+
+input[type="submit"]:focus {
+  outline: none;
+}
+input:invalid,
+textarea:invalid {
+  border-color: #f44336;
+}
+
+input:valid,
+textarea:valid {
+  border-color: #4CAF50;
+}
+
+textarea:focus, input:focus {
+  border-color: #007bff;
+}
+#password-strength {
+  font-size: 16px;
+  color: #fff;
+  background-color: #e0e0e0;
+  padding: 5px;
+  margin-top: 5px;
+  border-radius: 5px;
+  text-align: center;
+}
+
+#password-strength.weak {
+  background-color: #ff3d3d;
+}
+
+#password-strength.fair {
+  background-color: #ff9800;
+}
+
+#password-strength.good {
+  background-color: #ffeb3b;
+}
+
+#password-strength.strong {
+  background-color: #4caf50;
+}
+@media (max-width: 768px) {
+  .container {
+    padding: 10px;
+  }
+
+  h2 {
+    font-size: 24px;
+  }
+
+  .input-box {
+    margin-bottom: 10px;
+  }
+}
+
+  footer {
+    margin: 0px 60px;
+  }
+  
+  .top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 5px;
+  }
+  
+  .bottom {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  
+  .bottom ul {
+    display: flex;
+  }
+  
+  .top-right i {
+    padding: 5px;
+  }
+  #content-area {
+    padding: 20px;
+    background-color: #f9f9f9;
+    border-radius: 8px;
+    margin-top: 20px;
+  }
+  
+  .blog-post {
+    background-color: #fff;
+    border: 1px solid #ddd;
+    padding: 15px;
+    margin-bottom: 15px;
+    border-radius: 5px;
+  }
+  
+  .blog-post h3 {
+    color: #333;
+  }
+  
+  .blog-post p {
+    color: #666;
+  }
+  
+  

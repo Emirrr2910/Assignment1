@@ -85,8 +85,103 @@
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
     margin-top: 20px;
   }
+  .view-more-btn {
+    display: inline-block;
+    padding: 10px;
+    background-color: #4CAF50;
+    color: white;
+    text-align: center;
+    text-decoration: none;
+    border-radius: 5px;
+    margin-top: 10px;
+  }
+
+  .view-more-btn:hover {
+    background-color: #45a049;
+  }
   
- 
+  #weather {
+    background-color: #ffffff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+    max-width: 400px;
+    margin: 20px auto;
+    text-align: center;
+  }
+  
+  #weather h2 {
+    font-size: 24px;
+    color: #333;
+    margin-bottom: 20px;
+  }
+  
+  #weather input[type="text"] {
+    width: 80%;
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    margin-right: 10px;
+  }
+  
+  #weather button {
+    padding: 10px 20px;
+    font-size: 16px;
+    background-color: #4CAF50;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  #weather button:hover {
+    background-color: #45a049;
+  }
+  
+  #weather-data {
+    margin-top: 20px;
+    font-size: 18px;
+  }
+  
+  #weather-data p {
+    margin-bottom: 10px;
+  }
+  
+  #weather-data #location {
+    font-weight: bold;
+  }
+  
+  #error-message {
+    color: red;
+    display: none;
+    font-size: 16px;
+    margin-top: 20px;
+  }
+  .accordion {
+    background-color: #f1f1f1;
+    color: #444;
+    cursor: pointer;
+    padding: 10px;
+    width: 100%;
+    border: none;
+    text-align: left;
+    outline: none;
+    font-size: 15px;
+    transition: 0.4s;
+  }
+
+  .active, .accordion:hover {
+    background-color: #ccc;
+  }
+
+  .accordion-content {
+    padding: 0 18px;
+    display: none;
+    overflow: hidden;
+    background-color: #f9f9f9;
+  }
   #popular-movies {
     background-color: #2f3d1f;
     padding: 50px 20px;
@@ -140,7 +235,44 @@
     transform: translateY(-10px);
     transition: all 0.3s ease-in-out;
   }
-  
+  .modal {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgb(0,0,0);
+    background-color: rgba(0,0,0,0.9);
+  }
+
+  .modal-content {
+    margin: auto;
+    display: block;
+    width: 80%;
+    max-width: 700px;
+  }
+
+  .close {
+    position: absolute;
+    top: 15px;
+    right: 35px;
+    color: #fff;
+    font-size: 40px;
+    font-weight: bold;
+    cursor: pointer;
+  }
+  .movie-cards {
+    display: flex;
+    gap: 20px;
+  }
+
+  .card img {
+    width: 100%;
+    cursor: pointer;
+  }
 
   footer {
     background-color: #212529;

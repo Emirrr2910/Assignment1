@@ -4,11 +4,10 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Cinema Website</title>
-  <link rel="stylesheet" href="stil.css">
+  <link rel="stylesheet" href="./css/stil.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
 <body>
-
   <nav class="navbar">
     <div class="container">
       <a class="navbar-brand" href="#">CineWorld</a>
@@ -16,11 +15,9 @@
         <li><a href="upcoming.html">Upcoming</a></li>
         <li><a href="movies.html">Movies</a></li>
         <li><a href="login.html">Login</a></li>
-        
       </ul>
     </div>
   </nav>
-
 
   <header>
     <div class="header-left">
@@ -31,36 +28,79 @@
       <img src="./images/header.jpg" alt="Header Image">
     </div>
   </header><hr>
-
-  
   <section id="popular-movies">
-    <h2>Popular Movies</h2>
+    <h2>Image Gallery of Popular Movies</h2>
     <div class="movie-cards">
       <div class="card">
-        <img src="./images/godfather.jpg" alt="The Godfather">
+        <img src="./images/godfather.jpg" alt="The Godfather" class="movie-thumbnail" onclick="openModal(this)">
         <div class="card-body">
           <h5>The Godfather</h5>
           <p>The aging patriarch of an organized crime dynasty transfers control of his clandestine empire to his reluctant son.</p>
+          <a href="movie-details.html?movie=godfather" class="view-more-btn">Detailed Description</a>
         </div>
       </div>
       <div class="card">
-        <img src="./images/interstellar.jpg" alt="Interstellar">
+        <img src="./images/interstellar.jpg" alt="Interstellar" class="movie-thumbnail" onclick="openModal(this)">
         <div class="card-body">
           <h5>Interstellar</h5>
-          <p>When Earth becomes uninhabitable in the future, a farmer and ex-NASA pilot, Joseph Cooper, is tasked to pilot a spacecraft,
-             along with a team of researchers, to find a new planet for humans.</p>
+          <p>When Earth becomes uninhabitable in the future, a farmer and ex-NASA pilot, Joseph Cooper, is tasked to pilot a spacecraft, along with a team of researchers, to find a new planet for humans.</p>
+          <a href="movie-details.html?movie=interstellar" class="view-more-btn">Detailed Description</a>
         </div>
       </div>
       <div class="card">
-        <img src="./images/avengers.jpg" alt="Avengers: Infinity War">
+        <img src="./images/avengers.jpg" alt="Avengers: Infinity War" class="movie-thumbnail" onclick="openModal(this)">
         <div class="card-body">
           <h5>Avengers: Infinity War</h5>
           <p>The Avengers and their allies must be willing to sacrifice all in an attempt to defeat the powerful Thanos before his blitz of devastation and ruin puts an end to the universe.</p>
+          <a href="movie-details.html?movie=avengers" class="view-more-btn">Detailed Description</a>
         </div>
       </div>
     </div>
   </section>
 
+  <section id="faq">
+    <h2>Frequently Asked Questions</h2>
+    <button class="accordion">What is CineWorld?</button>
+    <div class="accordion-content">
+      <p>CineWorld is your ultimate destination for discovering the latest movies, trailers, and cinematic news.</p>
+    </div>
+
+    <button class="accordion">How do I book tickets?</button>
+    <div class="accordion-content">
+      <p>To book tickets, simply navigate to our 'Movies' section, select your desired movie, and follow the instructions to purchase tickets.</p>
+    </div>
+
+    <button class="accordion">What payment methods do you accept?</button>
+    <div class="accordion-content">
+      <p>We accept various payment methods including credit cards, PayPal, and other secure payment options.</p>
+    </div>
+
+    <button class="accordion">Do you have a mobile app?</button>
+    <div class="accordion-content">
+      <p>Yes, we have a CineWorld mobile app available for both iOS and Android for easy access to movie listings and ticket booking.</p>
+    </div>
+  </section><br><br>
+  <section id="weather">
+    <h2>Check the Weather</h2>
+    <label for="city">Enter city name:</label>
+    <input type="text" id="city" placeholder="City Name">
+    <button onclick="getWeatherData()">Click to Check the Weather</button>
+
+    <div id="weather-data" style="display:none;">
+      <p>Location: <span id="location"></span></p>
+      <p>Temperature: <span id="temperature"></span></p>
+      <p>Weather: <span id="weather"></span></p>
+    </div>
+
+    <div id="error-message" style="color: red; display: none;">
+      <p>Failed to load.</p>
+    </div>
+  </section>
+
+  <div id="myModal" class="modal">
+    <span class="close" onclick="closeModal()">&times;</span>
+    <img class="modal-content" id="modalImage">
+  </div>
 
   <footer>
     <div class="footer-content">
@@ -76,6 +116,71 @@
       </div>
     </div>
   </footer>
+
+  <script>
+    var acc = document.getElementsByClassName("accordion");
+    for (var i = 0; i < acc.length; i++) {
+      acc[i].addEventListener("click", function() {
+        this.classList.toggle("active");
+        var panel = this.nextElementSibling;
+        if (panel.style.display === "block") {
+          panel.style.display = "none";
+        } else {
+          panel.style.display = "block";
+        }
+      });
+    }
+
+    function openModal(img) {
+      var modal = document.getElementById("myModal");
+      var modalImg = document.getElementById("modalImage");
+      modal.style.display = "block";
+      modalImg.src = img.src;
+    }
+
+    function closeModal() {
+      var modal = document.getElementById("myModal");
+      modal.style.display = "none";
+    }
+
+    window.onclick = function(event) {
+      var modal = document.getElementById("myModal");
+      if (event.target === modal) {
+        modal.style.display = "none";
+      }
+    }
+    const apiKey = 'd50019b6797b76e144c65a80d4ebde3d'; 
+
+    function getWeatherData() {
+      const city = document.getElementById('city').value; 
+      if (!city) {
+        alert('Enter a city name');
+        return;
+      }
+      const apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
+
+      fetch(apiUrl)
+        .then(response => {
+          if (!response.ok) {
+            throw new Error('Failed');
+          }
+          return response.json();
+        })
+        .then(data => {
+          document.getElementById('location').textContent = data.name;
+          document.getElementById('temperature').textContent = `${data.main.temp} °C`;
+          document.getElementById('weather').textContent = data.weather[0].description;
+          document.getElementById('error-message').style.display = 'none';
+          document.getElementById('weather-data').style.display = 'block';
+        })
+        .catch(error => {
+          console.error('Error:', error);
+          document.getElementById('error-message').style.display = 'block';
+          document.getElementById('weather-data').style.display = 'none';
+        });
+    }
+    
+  </script>
 
 </body>
 </html>

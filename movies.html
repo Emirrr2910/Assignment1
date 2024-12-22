@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Movies</title>
-  <link rel="stylesheet" href="movies.css">
+  <link rel="stylesheet" href="./css/movies.css">
 </head>
 <body>
     <nav class="navbar">
@@ -15,16 +15,19 @@
             <li><a href="upcoming.html">Upcoming</a></li>
             <li><a href="login.html">Login</a></li>
           </ul>
+          <div class="navbar-options">
+            <button id="theme-toggle" class="navbar-btn">Switch Theme</button>
+            <button id="font-toggle" class="navbar-btn">Toggle Font Size</button>
+          </div>
         </div>
-      </nav><hr>
-      <header class="header">
+    </nav><hr>
+    <header class="header">
         <div class="content">
           <h1>Welcome to movies page</h1>
-          <p>Here you can explore all types of movies and genres. Enjoy our page :)
-          </p>
+          <p>Here you can explore all types of movies and genres. Enjoy our page :)</p>
         </div>
-      </header> <hr>
-      <section id="movie-genres">
+    </header><hr>
+    <section id="movie-genres">
         <h2> Movie Genres</h2>
 
         <div class="genre">
@@ -69,8 +72,6 @@
               </div>
             </div>
           </div><hr>
-      
-
         <div class="genre">
           <h3>Horror Movies</h3>
           <div class="movie-cards">
@@ -111,8 +112,6 @@
             </div>
           </div>
         </div><hr>
-      
-
         <div class="genre">
           <h3>Comedy Movies</h3>
           <div class="movie-cards">
@@ -157,7 +156,6 @@
           </div>
         </div>
       </section><hr>
-      
 
       <footer>
         <div class="footer-content">
@@ -174,6 +172,45 @@
         </div>
       </footer>
     
-    </body>
-    </html>
-    
+    <script>
+        const themeToggleBtn = document.getElementById('theme-toggle');
+        const fontToggleBtn = document.getElementById('font-toggle');
+
+        let currentTheme = localStorage.getItem('theme') || 'light';
+        let currentFontSize = localStorage.getItem('font-size') || 'normal';
+
+        if (currentTheme === 'dark') {
+            document.body.style.backgroundColor = '#333';
+            document.body.style.color = '#fff';
+        }
+
+        if (currentFontSize === 'large') {
+            document.body.style.fontSize = '18px';
+        }
+
+        themeToggleBtn.addEventListener('click', () => {
+            if (currentTheme === 'light') {
+                document.body.style.backgroundColor = '#333';
+                document.body.style.color = '#fff';
+                currentTheme = 'dark';
+            } else {
+                document.body.style.backgroundColor = '#fff';
+                document.body.style.color = '#000';
+                currentTheme = 'light';
+            }
+            localStorage.setItem('theme', currentTheme);
+        });
+
+        fontToggleBtn.addEventListener('click', () => {
+            if (currentFontSize === 'normal') {
+                document.body.style.fontSize = '18px';
+                currentFontSize = 'large';
+            } else {
+                document.body.style.fontSize = '16px';
+                currentFontSize = 'normal';
+            }
+            localStorage.setItem('font-size', currentFontSize);
+        });
+    </script>
+</body>
+</html>

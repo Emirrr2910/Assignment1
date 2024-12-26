@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Movie Details</title>
+  <link rel="stylesheet" href="./css/stil.css">
+  <link rel="stylesheet" href="./css/md.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<body>
+  <nav class="navbar">
+    <div class="container">
+      <a class="navbar-brand" href="#">CineWorld</a>
+      <ul class="navbar-links">
+        <li><a href="upcoming.html">Upcoming</a></li>
+        <li><a href="movies.html">Movies</a></li>
+        <li><a href="login.html">Login</a></li>
+        <li><a href="main.html">Main</a></li>
+      </ul>
+    </div>
+  </nav>
+  <div class="movie-details">
+    <div class="movie-description">
+      <h1 class="movie-title" id="movie-title"></h1>
+      <p class="movie-description-text" id="movie-description"></p>
+    </div>
+    <div class="movie-image">
+      <img src="" id="movie-image" alt="Movie Image">
+    </div>
+  </div>
+  <script>
+    const urlParams = new URLSearchParams(window.location.search);
+    const movie = urlParams.get('movie');
+    const movieDetails = {
+      godfather: {
+        title: 'The Godfather',
+        description: 'The Godfather "Don" Vito Corleone is the head of the Corleone mafia family in New York. He is at the event of his daughters wedding. Michael, Vitos youngest son and a decorated WWII Marine is also present at the wedding. Michael seems to be uninterested in being a part of the family business. Vito is a powerful man, and is kind to all those who give him respect but is ruthless against those who do not. But when a powerful and treacherous rival wants to sell drugs and needs the Dons influence for the same, Vito refuses to do it. What follows is a clash between Vitos fading old values and the new ways which may cause Michael to do the thing he was most reluctant in doing and wage a mob war against all the other mafia families which could tear the Corleone family apart.',
+        image: './images/godfather.jpg'
+      },
+      interstellar: {
+        title: 'Interstellar',
+        description: 'When Earth becomes uninhabitable in the future, a farmer and ex-NASA pilot, Joseph Cooper, is tasked to pilot a spacecraft, along with a team of researchers, to find a new planet for humans. In Earths future, a global crop blight and second Dust Bowl are slowly rendering the planet uninhabitable. Professor Brand, a brilliant N.A.S.A. physicist, is working on plans to save mankind by transporting Earths population to a new home via a womhole. But first, Brand must send former N.A.S.A. pilot Cooper and a team of researchers through the wormhole and across the galaxy to find out which of three planets could be mankinds new home.',
+        image: './images/interstellar.jpg'
+      },
+      avengers: {
+        title: 'Avengers: Infinity War',
+        description: 'The Avengers and their allies must be willing to sacrifice all in an attempt to defeat the powerful Thanos before his blitz of devastation and ruin puts an end to the universe. As the Avengers and their allies have continued to protect the world from threats too large for any one hero to handle, a new danger has emerged from the cosmic shadows: Thanos. A despot of intergalactic infamy, his goal is to collect all six Infinity Stones, artifacts of unimaginable power, and use them to inflict his twisted will on all of reality. Everything the Avengers have fought for has led up to this moment, the fate of Earth and existence has never been more uncertain.',
+        image: './images/avengers.jpg'
+      }
+    };
+    if (movieDetails[movie]) {
+      document.getElementById('movie-title').innerText = movieDetails[movie].title;
+      document.getElementById('movie-description').innerText = movieDetails[movie].description;
+      document.getElementById('movie-image').src = movieDetails[movie].image;
+    } else {
+      document.getElementById('movie-title').innerText = 'Movie not found';
+      document.getElementById('movie-description').innerText = 'The details for this movie are not available.';
+    }
+  </script>
+
+</body>
+</html>

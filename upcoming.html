@@ -4,7 +4,63 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Upcoming Movies</title>
-  <link rel="stylesheet" href="upcoming.css">
+  <link rel="stylesheet" href="./css/upcoming.css">
+  <script>
+    function toggleDescription(movieId) {
+      var description = document.getElementById(movieId);
+      var button = document.getElementById("toggle-button-" + movieId);
+      if (description.style.display === "none") {
+        description.style.display = "block";
+        button.textContent = "Hide Description";
+      } else {
+        description.style.display = "none";
+        button.textContent = "Show Description";
+      }
+    }
+    let movies = [
+      { id: 1, title: "Mufasa: The Lion King", description: "Simba, having become king of the Pride Lands, is determined for his cub to follow in his paw prints while the origins of his late father Mufasa are explored.", trailerLink: "https://www.youtube.com/watch?v=o17MF9vnabg", poster: "./images/lion.jpg" },
+      { id: 2, title: "A Minecraft Movie", description: "The malevolent Ender Dragon sets out on a path of destruction, prompting a young girl and her group of unlikely adventurers to set out to save the Overworld.", trailerLink: "https://www.youtube.com/watch?v=PE2YZhcC4NY", poster: "./images/minecraft.jpg" },
+      { id: 3, title: "Moana 2", description: "After receiving an unexpected call from her wayfinding ancestors, Moana journeys to the far seas of Oceania and into dangerous, long-lost waters for an adventure unlike anything she has ever faced.", trailerLink: "https://www.youtube.com/watch?v=hDZ7y8RP5HE", poster: "./images/moana.jpg" },
+      { id: 4, title: "Sonic the Hedgehog 3", description: "Sonic, Knuckles, and Tails reunite against a powerful new adversary, Shadow, a mysterious villain with powers unlike anything they have faced before. With their abilities outmatched, Team Sonic must seek out an unlikely alliance.", trailerLink: "https://www.youtube.com/watch?v=qSu6i2iFMO0", poster: "./images/sonic.jpg" }
+    ];
+    function renderTable() {
+      const tableBody = document.querySelector("#movieTable tbody");
+      tableBody.innerHTML = "";
+      movies.forEach(movie => {
+        const row = document.createElement("tr");
+        row.innerHTML = `
+          <td><img src="${movie.poster}" alt="${movie.title}" style="width: 100px;"></td>
+          <td>${movie.title}</td>
+          <td>
+            <p id="movie${movie.id}-description" style="display:none;">${movie.description}
+              <br> <a href="${movie.trailerLink}" target="_blank">Click this to watch trailer of the movie </a></p>
+            <button id="toggle-button-movie${movie.id}" onclick="toggleDescription('movie${movie.id}-description')">Click to see description about this movie</button>
+            <br><br>
+            <button onclick="editMovie(${movie.id})">Edit</button>
+            <button onclick="deleteMovie(${movie.id})">Delete</button>
+          </td>
+        `;
+        tableBody.appendChild(row);
+      });
+    }
+    function editMovie(movieId) {
+      const movie = movies.find(m => m.id === movieId);
+      const newDescription = prompt("Edit description:", movie.description);
+      if (newDescription !== null) {
+        movie.description = newDescription;
+        alert("Movie description updated!");
+        renderTable(); 
+      }
+    }
+    function deleteMovie(movieId) {
+      if (confirm("Are you sure you want to delete this movie?")) {
+        movies = movies.filter(m => m.id !== movieId);
+        alert("Movie deleted!");
+        renderTable(); 
+      }
+    }
+    window.onload = renderTable;
+  </script>
 </head>
 <body>
 
@@ -12,10 +68,9 @@
         <div class="content">
           <h1>Welcome to CineWorld</h1>
           <p>It looks like you are looking to see Upcoming Movies!
-            Well you are in the right place. :)
-          </p>
+            Well you are in the right place. :)</p>
         </div>
-      </header>
+    </header>
 
   <nav class="navbar">
     <div class="container">
@@ -28,10 +83,9 @@
     </div>
   </nav>
 
- 
-<section id="upcoming-movies">
+  <section id="upcoming-movies">
     <h2>Upcoming Movies</h2>
-    <table>
+    <table id="movieTable">
       <thead>
         <tr>
           <th>Poster</th>
@@ -40,40 +94,11 @@
         </tr>
       </thead>
       <tbody>
-        <tr>
-          <td><img src="./images/lion.jpg" alt="Mufasa: The Lion King"></td>
-          <td>Mufasa: The Lion King</td>
-          <td>Simba, having become king of the Pride Lands, is determined for his cub to follow in his paw prints while the origins of his late father Mufasa are explored.
-            <br> <a href="https://www.youtube.com/watch?v=o17MF9vnabg" target="_blank">Click this to watch trailer of the movie </a>
-          </td>
-        </tr>
-        <tr>
-          <td><img src="./images/minecraft.jpg" alt="A Minecraft Movie"></td>
-          <td>A Minecraft Movie</td>
-          <td>The malevolent Ender Dragon sets out on a path of destruction, prompting a young girl and her group of unlikely adventurers to set out to save the Overworld.
-            <br> <a href="https://www.youtube.com/watch?v=PE2YZhcC4NY" target="_blank">Click this to watch trailer of the movie </a>
-          </td>
-        </tr>
-        <tr>
-          <td><img src="./images/moana.jpg" alt="Moana 2"></td>
-          <td>Moana 2</td>
-          <td>After receiving an unexpected call from her wayfinding ancestors, Moana journeys to the far seas of Oceania and into dangerous,
-             long-lost waters for an adventure unlike anything she has ever faced.
-             <br> <a href="https://www.youtube.com/watch?v=hDZ7y8RP5HE" target="_blank">Click this to watch trailer of the movie </a></td>
-        </tr>
-        <tr>
-            <td><img src="./images/sonic.jpg" alt="Sonic the Hedgehog 3"></td>
-            <td>Sonic the Hedgehog 3</td>
-            <td>Sonic, Knuckles, and Tails reunite against a powerful new adversary, Shadow, a mysterious villain with powers unlike anything they have faced before.
-                 With their abilities outmatched, Team Sonic must seek out an unlikely alliance.
-                 <br> <a href="https://www.youtube.com/watch?v=qSu6i2iFMO0" target="_blank">Click this to watch trailer of the movie </a></td>
-          </tr>
       </tbody>
     </table>
   </section>
-  
 
- <footer>
+  <footer>
     <div class="footer-content">
       <h2><a href="#">CineWorld</a></h2>
       <ul class="footer-links">

@@ -38,6 +38,43 @@
   .navbar-links a:hover {
     color: #6fbb18;
   }
+  .navbar-btn {
+    background-color: #555;
+    color: #fff;
+    border: none;
+    padding: 8px 12px;
+    cursor: pointer;
+    font-size: 14px;
+    margin-left: 15px;
+    border-radius: 5px;
+    transition: background-color 0.3s, transform 0.2s;
+}
+
+.navbar-btn:hover {
+    background-color: #777;
+    transform: scale(1.05);
+}
+
+.theme-light {
+    background-color: #f4f4f4;
+    color: #000;
+}
+
+.theme-dark {
+    background-color: #333;
+    color: #fff;
+}
+.font-small {
+    font-size: 14px;
+}
+
+.font-medium {
+    font-size: 16px;
+}
+
+.font-large {
+    font-size: 18px;
+}
   .header {
     color: rgb(3, 3, 3); 
     padding: 40px 0;
